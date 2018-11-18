@@ -1,6 +1,6 @@
 <template>
   <v-container ref="HelloWorld_container">
-    <div class="d_container" ref="d_container">
+    <div class="d_container" ref="d_container" v-if="!show_output">
       <v-expansion-panel focusable>
         <v-expansion-panel-content>
           <div slot="header">7.反空汙公投</div>
@@ -164,9 +164,20 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
     </div>
-    <v-btn color="success" @click="ddddo">產生圖片</v-btn>
-    <div  ref="myoutput"></div>
-    <Output v-if="show_output"></Output>
+    <Output v-if="show_output"
+      :p7="p7"
+      :p8="p8"
+      :p9="p9"
+      :p10="p10"
+      :p11="p11"
+      :p12="p12"
+      :p13="p13"
+      :p14="p14"
+      :p15="p15"
+      :p16="p16"
+    ></Output>
+    <v-btn v-if="!show_output" color="success" @click="next">下一步</v-btn>
+    <v-btn v-if="show_output" @click="show_output = false">上一步</v-btn>
   </v-container>
 </template>
 
@@ -190,20 +201,20 @@
       show_output: false
     }),
     methods: {
-      ddddo(){
+      next(){
         this.show_output = true;
+
+        // let node = this.$refs.d_container;
         
-        let node = this.$refs.d_container;
-        
-        domtoimage.toPng(node)
-        .then((dataUrl)=> {
-            var img = new Image();
-            img.src = dataUrl;
-            this.$refs.myoutput.appendChild(img);
-        })
-        .catch(function (error) {
-            console.error('oops, something went wrong!', error);
-        });
+        // domtoimage.toPng(node)
+        // .then((dataUrl)=> {
+        //     var img = new Image();
+        //     img.src = dataUrl;
+        //     this.$refs.myoutput.appendChild(img);
+        // })
+        // .catch(function (error) {
+        //     console.error('oops, something went wrong!', error);
+        // });
       }
     },
     
