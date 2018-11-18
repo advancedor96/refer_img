@@ -24,9 +24,9 @@
          <a href="#" class="poi" style="left: 412px; top: 645px;" ref="p16b"></a>
       </div>
 
-      <!-- <a class="my_btn" id="dl" download="公投小抄.png" href="#">
-      </a> -->
+      <a id="dl" class="empty_a" download="公投小抄.png" href="#">
          <v-btn @click="dlCanvas">下載圖片</v-btn>
+      </a>
    </div>
 </template>
 
@@ -42,8 +42,8 @@ export default {
 
       //   /* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
       dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
-      // this.href = dt;
-      window.open(dt);
+      this.href = dt;
+      // window.open(dt);
       
       }
    },
@@ -180,4 +180,7 @@ canvas#c {
 .poi { position: absolute; width: 50px; height: 35px; }
 
 .my_btn {background: #000; color:#fff; border-radius:5px; pading:5px; margin:5px;  width:30%; }
+.empty_a{
+   text-decoration: none;
+}
 </style>
